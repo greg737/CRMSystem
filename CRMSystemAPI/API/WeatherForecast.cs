@@ -1,4 +1,4 @@
-namespace CRMSystem
+namespace API
 {
     public class WeatherForecast
     {
