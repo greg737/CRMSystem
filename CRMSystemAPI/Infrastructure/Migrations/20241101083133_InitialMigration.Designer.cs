@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
-    [DbContext(typeof(CRMContext))]
-    [Migration("20241030091638_InitialMigration")]
+    [DbContext(typeof(CRMDbContext))]
+    [Migration("20241101083133_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -64,6 +64,9 @@ namespace Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -73,7 +76,23 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CustomerId");
+
                     b.ToTable("SaleOpportunities");
+                });
+
+            modelBuilder.Entity("Domain.Entities.SaleOpportunity", b =>
+                {
+                    b.HasOne("Domain.Entities.Customer", null)
+                        .WithMany("saleOpportunities")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Entities.Customer", b =>
+                {
+                    b.Navigation("saleOpportunities");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,8 +1,8 @@
-using Domain.Enums;
+﻿using Domain.Enums;
 
-namespace Domain.Entities
+namespace Application.Customers.Queries
 {
-    public class SaleOpportunity
+    public class SaleOpportunityDto
     {
         public int Id { get; set; }
         public int CustomerId { get; set; }

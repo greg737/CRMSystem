@@ -3,14 +3,13 @@ services:
     container_name: crm_api
     build: ./CRMSystemAPI
     ports:
-      - "3000:8080"
+      - "5000:8080"
     depends_on:
       - "sql"
   sql:
-    image: "mcr.microsoft.com/mssql/server:2022-latest"
-    container_name: sql_server
-    ports: # not actually needed, because the two services are on the same network
-      - "1433:1433" 
+    build: ./Db
+    ports:
+      - "1433:1433"
     environment:
       - ACCEPT_EULA=y
       - SA_PASSWORD=HelloWorldPassword951!
