@@ -11,6 +11,7 @@ Run WebAPI
 Assumptions
 - No requirement to support deletes
 - No requirement for strict form validation
+- Created date time stamp is not needed for sale opportunity entity
 
 Future Improvements
 - Add better feedback and error handling around saving and editing
@@ -25,3 +26,5 @@ Future Improvements
 - Refactor saleOpportunity component to get data as props instead so that it would be easier to test
 - Setup Eslint
 - Unit test for validation and saleOpportunity component
+- Add created datetime stamp for sale opportunity
+- Add modified datetime stamp for two entities for audit purposes
