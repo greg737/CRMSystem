@@ -60,15 +60,6 @@ export default function CustomerDetail(props: CustomerDetailProps) {
         fetchCustomerDetail();
     }, [props.customerId]);
 
-    function dateToInputString(dateTime: Date | undefined) {
-        if (!dateTime) {
-            return '';
-        }
-
-        dateTime.setMinutes(dateTime.getMinutes() - dateTime.getTimezoneOffset());
-        return dateTime.toISOString().slice(0,16);
-    };
-
     type CustomerDtoKey = keyof typeof CustomerDto;
     function generateOnChange(fieldName: CustomerDtoKey) {
         return (e: ChangeEvent<HTMLInputElement>) => {
@@ -84,13 +75,24 @@ export default function CustomerDetail(props: CustomerDetailProps) {
         <Form onSubmit={saveCustomer} validated={validated}>
             <Row>
                 <Col>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Name:</Form.Label>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Name</Form.Label>
                         <Form.Control type="text" placeholder="Liam Lawson" value={customer?.name} onChange={generateOnChange('name' as CustomerDtoKey)} required />
                     </Form.Group>
                 </Col>
                 <Col>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3">
+                        <Form.Label>Status</Form.Label>
+                        <Form.Select>
+                            <option>Select Status</option>
+                            <option value="Active">Active</option>
+                            <option value="NonActive">Non Active</option>
+                            <option value="Lead">Lead</option>
+                        </Form.Select>
+                    </Form.Group>
+                </Col>
+                <Col>
+                    <Form.Group className="mb-3">
                         <Form.Label>Created</Form.Label>
                         <Form.Control type="datetime-local" defaultValue={dateToInputString(customer?.created)} disabled/>
                     </Form.Group>
@@ -98,13 +100,13 @@ export default function CustomerDetail(props: CustomerDetailProps) {
             </Row>
             <Row>
                 <Col>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3">
                         <Form.Label>Email</Form.Label>
                         <Form.Control type="email" placeholder="name@example.com" value={customer?.email} onChange={generateOnChange('email' as CustomerDtoKey)}  required />
                     </Form.Group>
                 </Col>
                 <Col>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3">
                         <Form.Label>Mobile Phone</Form.Label>
                         <Form.Control type="tel" value={customer?.phone} onChange={generateOnChange('phone' as CustomerDtoKey)}  required />
                     </Form.Group>
