@@ -8,7 +8,8 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import useCustomerStore from "@/store/customer.store";
-import { CustomerDto } from "@/client/customer.api";
+import { CustomerDto, CustomerStatus } from "@/client/customer.api";
+import { dateToInputString } from "@/helper/datetime-helper";
 
 interface CustomerDetailProps {
     customerId?: number
@@ -71,6 +72,13 @@ export default function CustomerDetail(props: CustomerDetailProps) {
         }
     }
 
+    function statusOnChange(e: ChangeEvent<HTMLSelectElement>) {
+        setCustomer({
+            ...customer,
+            status: e.target?.value as CustomerStatus
+        } as CustomerDto)
+    }
+
     return (
         <Form onSubmit={saveCustomer} validated={validated}>
             <Row>
@@ -83,7 +91,7 @@ export default function CustomerDetail(props: CustomerDetailProps) {
                 <Col>
                     <Form.Group className="mb-3">
                         <Form.Label>Status</Form.Label>
-                        <Form.Select>
+                        <Form.Select value={customer?.status} required onChange={statusOnChange}>
                             <option>Select Status</option>
                             <option value="Active">Active</option>
                             <option value="NonActive">Non Active</option>

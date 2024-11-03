@@ -21,7 +21,7 @@ export default function EditCustomer({ params }: { params: Promise<{ id: number 
 
     return (
         <Container>
-            <Row>
+            <Row className="mt-2">
                 <h2>Customer Details</h2>
             </Row>
             <Row className="mb-5">

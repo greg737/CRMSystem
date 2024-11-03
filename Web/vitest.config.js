@@ -1,8 +1,8 @@
 import path from 'path'
-import vue from '@vitejs/plugin-vue'
+import react from '@vitejs/plugin-react'
 
 export default {
-  plugins: [vue()],
+  plugins: [react()],
   test: {
     globals: true,
     environment: 'jsdom',
