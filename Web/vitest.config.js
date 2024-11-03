@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react'
 export default {
   plugins: [react()],
   test: {
+    setupFiles: './vitest.setup.ts',
     globals: true,
     environment: 'jsdom',
   },

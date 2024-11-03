@@ -84,14 +84,14 @@ export default function CustomerDetail(props: CustomerDetailProps) {
             <Row>
                 <Col>
                     <Form.Group className="mb-3">
-                        <Form.Label>Name</Form.Label>
-                        <Form.Control type="text" placeholder="Liam Lawson" value={customer?.name} onChange={generateOnChange('name' as CustomerDtoKey)} required />
+                        <Form.Label for="customer-name">Name</Form.Label>
+                        <Form.Control id="customer-name" type="text" placeholder="Liam Lawson" value={customer?.name} onChange={generateOnChange('name' as CustomerDtoKey)} required />
                     </Form.Group>
                 </Col>
                 <Col>
                     <Form.Group className="mb-3">
-                        <Form.Label>Status</Form.Label>
-                        <Form.Select value={customer?.status} required onChange={statusOnChange}>
+                        <Form.Label for="customer-status">Status</Form.Label>
+                        <Form.Select id="customer-status" value={customer?.status} required onChange={statusOnChange}>
                             <option>Select Status</option>
                             <option value="Active">Active</option>
                             <option value="NonActive">Non Active</option>
@@ -101,22 +101,22 @@ export default function CustomerDetail(props: CustomerDetailProps) {
                 </Col>
                 <Col>
                     <Form.Group className="mb-3">
-                        <Form.Label>Created</Form.Label>
-                        <Form.Control type="datetime-local" defaultValue={dateToInputString(customer?.created)} disabled/>
+                        <Form.Label for="customer-created">Created</Form.Label>
+                        <Form.Control id="customer-created" type="datetime-local" defaultValue={dateToInputString(customer?.created)} disabled/>
                     </Form.Group>
                 </Col>
             </Row>
             <Row>
                 <Col>
                     <Form.Group className="mb-3">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" placeholder="name@example.com" value={customer?.email} onChange={generateOnChange('email' as CustomerDtoKey)}  required />
+                        <Form.Label for="customer-email">Email</Form.Label>
+                        <Form.Control id="customer-email" type="email" placeholder="name@example.com" value={customer?.email} onChange={generateOnChange('email' as CustomerDtoKey)}  required />
                     </Form.Group>
                 </Col>
                 <Col>
                     <Form.Group className="mb-3">
-                        <Form.Label>Mobile Phone</Form.Label>
-                        <Form.Control type="tel" value={customer?.phone} onChange={generateOnChange('phone' as CustomerDtoKey)}  required />
+                        <Form.Label for="customer-phone">Mobile Phone</Form.Label>
+                        <Form.Control id="customer-phone" type="tel" value={customer?.phone} onChange={generateOnChange('phone' as CustomerDtoKey)}  required />
                     </Form.Group>
                 </Col>
             </Row>
